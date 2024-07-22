@@ -1,0 +1,38 @@
+{
+  "compilerOptions": {
+      /* Visit https://www.typescriptlang.org/tsconfig to learn more about this file and the options */
+      
+      /* Language and Environment */
+      /* Set the JavaScript language version for emitted JavaScript and include compatible library declarations. */
+      "target": "es2016",
+          
+      /* Modules */
+      /* Specify the root folder within your source files. */
+      "module": "commonjs",
+      /* Specify the root folder within your source files. */
+      "rootDir": "./src/",
+      /* Enable importing .json files */
+      "resolveJsonModule": true,
+          
+      /* Emit */
+      /* Specify an output folder for all emitted files. */
+      "outDir": "./build/",
+      /* Disable erasing `const enum` declarations in generated code. */
+      "preserveConstEnums": true,                       
+
+      /* Interop Constraints */
+      /* Emit additional JavaScript to ease support for importing CommonJS modules. This enables `allowSyntheticDefaultImports` for type compatibility. */
+      "esModuleInterop": true,
+      /* Ensure that casing is correct in imports. */
+      "forceConsistentCasingInFileNames": true,
+
+      /* Type Checking */
+      /* Enable all strict type-checking options. */
+      "strict": true,
+
+      /* Completeness */
+      /* Skip type checking all .d.ts files. */
+      "skipLibCheck": true
+  },
+  "exclude": ["build", "node_modules"]
+}
