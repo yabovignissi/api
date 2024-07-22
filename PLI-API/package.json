@@ -5,7 +5,7 @@
   "main": "index.ts",
   "scripts": {
     "dev": "nodemon",
-    "build": "rm -fr build && tsc --output public",
+    "build": "rm -fr build && tsc",
     "eslint": "eslint ./src/ --fix",
     "generate": "npx prisma generate",
     "migrate": "npx prisma migrate dev",
