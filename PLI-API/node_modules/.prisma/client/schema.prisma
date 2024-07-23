@@ -1,0 +1,84 @@
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  id        Int      @id @default(autoincrement())
+  email     String   @unique
+  password  String
+  firstName String?
+  lastName  String?
+  avatarUrl String?
+  adress    String
+
+  isVisible Boolean  @default(true)
+  createdAt DateTime @default(now())
+
+  // Relations
+  trips     Trip[]
+  comments  Comment[]
+}
+
+
+
+model Trip {
+  id          Int       @id @default(autoincrement())
+  userId      Int
+  title       String
+  description String?
+  startDate   DateTime
+  endDate     DateTime
+  createdAt   DateTime  @default(now())
+
+  // Relations
+  user        User      @relation(fields: [userId], references: [id])
+  steps       Step[]
+}
+
+
+
+model Step {
+  id          Int       @id @default(autoincrement())
+  tripId      Int
+  stepDate    DateTime
+  locationLat Float
+  locationLong Float
+  description String?
+  photoUrl    String?
+  createdAt   DateTime @default(now())
+
+  // Relations
+  trip        Trip      @relation(fields: [tripId], references: [id])
+  photos      Photo[]
+  comments    Comment[]
+}
+
+
+model Photo {
+  id         Int      @id @default(autoincrement())
+  stepId     Int
+  photoUrl   String
+  caption    String?
+  createdAt  DateTime @default(now())
+
+  // Relations
+  step       Step     @relation(fields: [stepId], references: [id])
+}
+
+
+model Comment {
+  id         Int      @id @default(autoincrement())
+  userId     Int
+  stepId     Int
+  comment    String
+  createdAt  DateTime @default(now())
+
+  // Relations
+  user       User     @relation(fields: [userId], references: [id])
+  step       Step     @relation(fields: [stepId], references: [id])
+}
